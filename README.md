@@ -2,4 +2,4 @@
 - Sample codes written with SQL. 
 
 ### samples_with_HiveQuery.md
-- Code snippets have been altered for clearer delivery. Hive Query was specifically used
+- Code was writen in markdown and snippets have been altered for clearer delivery. Hive Query was specifically used
