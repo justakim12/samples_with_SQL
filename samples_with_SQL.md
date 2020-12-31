@@ -3,7 +3,7 @@
 
 ```sql
 SELECT count(*)
-FROM reviews_v1 AS reviews
+FROM reviews
 WHERE TIMESTAMP(CAST(fulldocument.created.`$date` AS BIGINT), 'Asia/Seoul') > '2019-03-01 00:00:00'
 ```
 
@@ -23,10 +23,10 @@ WHERE TIMESTAMP(CAST(fulldocument.created.`$date` AS BIGINT), 'Asia/Seoul') > '2
 
 ```sql
 SELECT COUNT(reviews.fulldocument.`_id`) as review_count,
-       reviews.fulldocument.name
+       reviews.name
 FROM reviews
 WHERE TIMESTAMP(CAST(fulldocument.created.`$date` AS BIGINT), 'Asia/Seoul') > '2020-08-01 00:00:00'
-GROUP BY reviews.fulldocument.name
+GROUP BY reviews.name
 ORDER BY review_count DESC
 ```
 
@@ -45,13 +45,13 @@ HAVING review_count >= 10
 - Find the average rating of users who have a current grade of green 
 
 ```sql
-SELECT userstats.fulldocument.id,
-       userstats.fulldocument.avgRating,
-       users.fulldocument.currentGrade
+SELECT userstats.id,
+       userstats.avgRating,
+       users.currentGrade
 FROM userstats_v1 AS userstats
        LEFT JOIN users_v1 AS users
-                 ON userstats.fulldocument.id = users.fulldocument.name
-WHERE users.fulldocument.currentGrade LIKE '%green%'
+                 ON userstats.id = users.name
+WHERE users.currentGrade LIKE '%green%'
 ```
 
 ## LENGTH, SIZE and OR Clause
@@ -70,7 +70,7 @@ OR (SIZE(array_media) >= 1)
 - Find where array contains the string 'cool' and create full URL by combining strings
 
 ```sql
-SELECT CONCAT('https://website_name', reviews.id) AS url, 
+SELECT CONCAT('https://website_name/', reviews.id) AS url, 
        reviews.name
 FROM reviews
 WHERE ARRAY_CONTAINS(reviews.class, 'cool)
