@@ -4,7 +4,7 @@
 ```sql
 SELECT count(*)
 FROM reviews
-WHERE TIMESTAMP(CAST(fulldocument.created.`$date` AS BIGINT), 'Asia/Seoul') > '2019-03-01 00:00:00'
+WHERE TIMESTAMP(CAST(created.`$date` AS BIGINT), 'Asia/Seoul') > '2019-03-01 00:00:00'
 ```
 
 ## COUNT DISTINCT Clause
@@ -13,7 +13,7 @@ WHERE TIMESTAMP(CAST(fulldocument.created.`$date` AS BIGINT), 'Asia/Seoul') > '2
 ```sql
 SELECT COUNT(DISTINCT reviews.names)
 FROM reviews_v1 AS reviews
-WHERE TIMESTAMP(CAST(fulldocument.created.`$date` AS BIGINT), 'Asia/Seoul') > '2019-03-01 00:00:00'
+WHERE TIMESTAMP(CAST(created.`$date` AS BIGINT), 'Asia/Seoul') > '2019-03-01 00:00:00'
 ```
 
 
