@@ -22,7 +22,7 @@ WHERE TIMESTAMP(CAST(created.`$date` AS BIGINT), 'Asia/Seoul') > '2019-03-01 00:
 - Find how many reviews each user created starting from 2020-08-01
 
 ```sql
-SELECT COUNT(reviews.fulldocument.`_id`) as review_count,
+SELECT COUNT(reviews.id) as review_count,
        reviews.name
 FROM reviews
 WHERE TIMESTAMP(CAST(fulldocument.created.`$date` AS BIGINT), 'Asia/Seoul') > '2020-08-01 00:00:00'
@@ -34,7 +34,7 @@ ORDER BY review_count DESC
 - Find users who created more than 10 reviews
 
 ```sql
-SELECT COUNT(reviews.fulldocument.`_id`) AS review_count,
+SELECT COUNT(reviews.id) AS review_count,
        reviews.fulldocument.name
 FROM reviews
 GROUP BY reviews.fulldocument.name
@@ -51,7 +51,7 @@ SELECT userstats.id,
 FROM userstats_v1 AS userstats
        LEFT JOIN users_v1 AS users
                  ON userstats.id = users.name
-WHERE users.currentGrade LIKE '%green%'
+WHERE users.grade LIKE '%green%'
 ```
 
 ## LENGTH, SIZE and OR Clause
