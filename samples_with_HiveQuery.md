@@ -25,7 +25,7 @@ WHERE TIMESTAMP(CAST(created.`$date` AS BIGINT), 'Asia/Seoul') > '2019-03-01 00:
 SELECT COUNT(reviews.id) as review_count,
        reviews.name
 FROM reviews
-WHERE TIMESTAMP(CAST(fulldocument.created.`$date` AS BIGINT), 'Asia/Seoul') > '2020-08-01 00:00:00'
+WHERE TIMESTAMP(CAST(created.`$date` AS BIGINT), 'Asia/Seoul') > '2020-08-01 00:00:00'
 GROUP BY reviews.name
 ORDER BY review_count DESC
 ```
